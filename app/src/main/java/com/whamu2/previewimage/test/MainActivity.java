@@ -89,34 +89,15 @@ public class MainActivity extends AppCompatActivity {
         btn = findViewById(R.id.btn_call);
         btn_readimg = findViewById(R.id.btn_readimg);
         //imageView.setOnClickListener(this);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.i("tchl", Uri.fromFile(new File("/sdcard/jpg.jpg")).toString());
-
-                Log.i("tchl", "image view click");
-                Intent intent = new Intent(Intent.ACTION_PICK, null);
-                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        "image/*");
-                startActivityForResult(intent, 0x1);
-
-            }
+        imageView.setOnClickListener(v -> {
+            Log.i("tchl", Uri.fromFile(new File("/sdcard/jpg.jpg")).toString());
+            Log.i("tchl", "image view click");
+            Intent intent = new Intent(Intent.ACTION_PICK, null);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            startActivityForResult(intent, 0x1);
         });
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                call();
-            }
-        });
-
-        btn_readimg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadimage();
-            }
-        });
+        btn.setOnClickListener(v -> call());
+        btn_readimg.setOnClickListener(v -> loadimage());
 
 
         callIntent = new Intent(Intent.ACTION_CALL);
@@ -318,19 +299,11 @@ public class MainActivity extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("电话权限不可用")
                 .setMessage("请在-应用设置-权限-中，允许APP使用电话权限来测试")
-                .setPositiveButton("立即开启", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // 跳转到应用设置界面
-                        goToAppSetting();
-                    }
+                .setPositiveButton("立即开启", (dialog, which) -> {
+                    // 跳转到应用设置界面
+                    goToAppSetting();
                 })
-                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                }).setCancelable(false).show();
+                .setNegativeButton("取消", (dialog, which) -> dialog.cancel()).setCancelable(false).show();
 
     }
 
@@ -344,5 +317,4 @@ public class MainActivity extends AppCompatActivity {
         intent.setData(uri);
         startActivityForResult(intent, 123);
     }
-
 }

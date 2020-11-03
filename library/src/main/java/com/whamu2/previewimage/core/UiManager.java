@@ -55,6 +55,4 @@ interface UiManager<Builder> {
      */
     @CheckResult
     Builder showOriginImage(boolean show);
-
-
 }
