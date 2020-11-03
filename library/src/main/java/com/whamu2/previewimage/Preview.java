@@ -1,7 +1,7 @@
 package com.whamu2.previewimage;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.whamu2.previewimage.core.PreviewBuilder;
 

@@ -2,10 +2,9 @@ package com.whamu2.previewimage.core;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import com.whamu2.previewimage.engine.ImageEngine;
 import com.whamu2.previewimage.entity.Image;
 import com.whamu2.previewimage.ui.PreviewFragmentActivity;
 

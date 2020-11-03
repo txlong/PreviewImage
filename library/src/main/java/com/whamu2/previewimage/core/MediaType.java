@@ -1,8 +1,8 @@
 package com.whamu2.previewimage.core;
 
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.CheckResult;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.whamu2.previewimage.entity.Image;
 

@@ -1,10 +1,7 @@
 package com.whamu2.previewimage.core;
 
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
-
-import com.whamu2.previewimage.engine.ImageEngine;
-import com.whamu2.previewimage.engine.impl.GlideEngine;
+import androidx.annotation.CheckResult;
+import androidx.annotation.NonNull;
 
 /**
  * General ui update method

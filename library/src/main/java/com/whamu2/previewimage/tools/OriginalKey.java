@@ -1,6 +1,6 @@
 package com.whamu2.previewimage.tools;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.bumptech.glide.load.Key;
 

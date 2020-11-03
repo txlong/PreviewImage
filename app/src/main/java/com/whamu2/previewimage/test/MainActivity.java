@@ -1,7 +1,6 @@
 package com.whamu2.previewimage.test;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,16 +10,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.whamu2.previewimage.Preview;
-import com.whamu2.previewimage.engine.impl.GlideEngine;
 import com.whamu2.previewimage.entity.Image;
 
 import java.io.File;
@@ -36,11 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String READ_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE;
     private Intent callIntent;
     ImageView imageView;
-    Button  btn_readimg;
+    Button btn_readimg;
     Button btn;
     String[] urls = {
             "http://img3.16fan.com/live/origin/201805/21/E421b24c08446.jpg",
-
             "http://img3.16fan.com/live/origin/201805/21/E421b24c08446.jpg",
             "http://img3.16fan.com/live/origin/201805/21/4D7B35fdf082e.jpg",
             "http://img6.16fan.com/attachments/wenzhang/201805/18/152660818127263ge.jpeg", //  5760 * 3840
@@ -73,10 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // TODO Auto-generated method stub
         if (requestCode == 0x1 && resultCode == RESULT_OK) {
             if (data != null) {
-                Log.i("tchl","data url"+ data.getData().toString());
+                Log.i("tchl", "data url" + data.getData().toString());
                 imageView.setImageURI(data.getData());
             }
         }
@@ -95,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.i("tchl",Uri.fromFile(new File("/sdcard/jpg.jpg")).toString());
+                Log.i("tchl", Uri.fromFile(new File("/sdcard/jpg.jpg")).toString());
 
-                Log.i("tchl","image view click");
+                Log.i("tchl", "image view click");
                 Intent intent = new Intent(Intent.ACTION_PICK, null);
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                         "image/*");
@@ -113,8 +111,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btn_readimg.setOnClickListener(new View.OnClickListener(){
-
+        btn_readimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadimage();
@@ -210,8 +207,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadimage() {
-        Log.i("tchl","call loadimage");
-        if(checkPermissionStorage(READ_STORAGE)){
+        Log.i("tchl", "call loadimage");
+        if (checkPermissionStorage(READ_STORAGE)) {
             imageView.setImageURI(Uri.fromFile(new File("/sdcard/jpg.jpg")));
         } else {
             startRequestPermisionStorage(READ_STORAGE);
@@ -226,12 +223,15 @@ public class MainActivity extends AppCompatActivity {
             startRequestPermision(CALL_PHONE);
         }
     }
+
     private void startRequestPermision(String permission) {
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.CALL_PHONE}, REQUEST_PERMISSION_CALL);
     }
+
     private void startRequestPermisionStorage(String permission) {
         ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_PERMISSION_READ_STORAGE);
     }
+
     private boolean checkPermission(String permission) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(this, CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
@@ -280,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                            showTipGoSetting();
+                                        showTipGoSetting();
                                     }
                                 })
                                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -299,19 +299,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if(requestCode == REQUEST_PERMISSION_READ_STORAGE){
+        if (requestCode == REQUEST_PERMISSION_READ_STORAGE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     loadimage();
                 } else {
-                    Log.i("tchl","read storage not PERMISSION_GRANTED  ");
+                    Log.i("tchl", "read storage not PERMISSION_GRANTED  ");
                 }
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
-
-
 
     /**
      * 用于在用户勾选“不再提示”并且拒绝时，再次提示用户
