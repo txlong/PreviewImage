@@ -48,8 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:contentDescription="@string/title_activity_preview"
             android:padding="10dp"
             android:src="@drawable/ic_file_download_24dp" />
