@@ -2,14 +2,17 @@
 一款支持全屏、分页、伸缩、自由配置加载图片引擎的图片预览工具
 
 <p align="left">
-   <a href="https://jitpack.io/#whamu2/PreviewImage">
-    <img src="https://jitpack.io/v/whamu2/PreviewImage.svg" alt="Latest Stable Version" />
+   <a href="https://jitpack.io/v/txlong/PreviewImage">
+    <img src="https://jitpack.io/v/txlong/PreviewImage.svg" alt="Latest Stable Version" />
   </a>
   <a href="https://developer.android.com/about/versions/android-4.4.html">
     <img src="https://img.shields.io/badge/API-19%2B-blue.svg?style=flat-square" alt="Min Sdk Version" />
   </a>
   <a href="https://github.com/whamu2">
     <img src="https://img.shields.io/badge/Author-whamu2-orange.svg?style=flat-square" alt="Author" />
+  </a>
+  <a href="https://github.com/txlong">
+    <img src="https://img.shields.io/badge/RebuildBy-txlong-green.svg?style=flat-square" alt="RebuildBy" />
   </a>
 </p>
 
@@ -32,7 +35,7 @@ Step 2. Add the dependency
 
 ```groovy
 dependencies {
-       implementation 'com.github.whamu2:PreviewImage:v1.1.0'
+       implementation 'com.github.txlong:PreviewImage:1.0'
 }
 ```
 
